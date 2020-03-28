@@ -185,6 +185,8 @@ js_Boot.__string_rec = function(o,s) {
 	}
 };
 var uk_CanvasUK = function(surface) {
+	this.scaleY = 1.;
+	this.scaleX = 1.;
 	this.seaColor = 11919863;
 	this.grassColor = 13888183;
 	this.borderColor = 9023938;
@@ -196,10 +198,7 @@ var uk_CanvasUK = function(surface) {
 };
 uk_CanvasUK.__name__ = true;
 uk_CanvasUK.prototype = {
-	draw: function(factor) {
-		if(factor == null) {
-			factor = 1.;
-		}
+	draw: function() {
 		var shapes = [uk_UK.shape1,uk_UK.shape2,uk_UK.shape3,uk_UK.shape4,uk_UK.shape5,uk_UK.shape6,uk_UK.shape7,uk_UK.shape8,uk_UK.shape9,uk_UK.shape10,uk_UK.shape11,uk_UK.shape12,uk_UK.shape13,uk_UK.shape14,uk_UK.shape15,uk_UK.shape16,uk_UK.shape17,uk_UK.shape18,uk_UK.shape19,uk_UK.shape20,uk_UK.shape21,uk_UK.shape22];
 		var this1 = this.surface;
 		var col = this.seaColor;
@@ -218,20 +217,20 @@ uk_CanvasUK.prototype = {
 		this3.y = y;
 		this3.me.moveTo(x,y);
 		var this4 = this.surface;
-		var x1 = this.dx + this.w * factor;
+		var x1 = this.dx + this.w * this.scaleX;
 		var y1 = this.dy;
 		this4.x = x1;
 		this4.y = y1;
 		this4.me.lineTo(x1,y1);
 		var this5 = this.surface;
-		var x2 = this.dx + this.w * factor;
-		var y2 = this.dy + this.h * factor;
+		var x2 = this.dx + this.w * this.scaleY;
+		var y2 = this.dy + this.h * this.scaleY;
 		this5.x = x2;
 		this5.y = y2;
 		this5.me.lineTo(x2,y2);
 		var this6 = this.surface;
 		var x3 = this.dx;
-		var y3 = this.dy + this.h * factor;
+		var y3 = this.dy + this.h * this.scaleY;
 		this6.x = x3;
 		this6.y = y3;
 		this6.me.lineTo(x3,y3);
@@ -256,8 +255,8 @@ uk_CanvasUK.prototype = {
 			var tmp3 = StringTools.hex(col3,6);
 			this9.me.strokeStyle = "#" + tmp3;
 			var this10 = this.surface;
-			var x4 = this.dx + si[0] * factor;
-			var y4 = this.dy + 500 * factor - si[1] * factor;
+			var x4 = this.dx + si[0] * this.scaleX;
+			var y4 = this.dy + 500 * this.scaleY - si[1] * this.scaleY;
 			this10.x = x4;
 			this10.y = y4;
 			this10.me.moveTo(x4,y4);
@@ -266,8 +265,8 @@ uk_CanvasUK.prototype = {
 			while(_g1 < _g11) {
 				var i = _g1++;
 				var this11 = this.surface;
-				var x5 = this.dx + si[i * 2] * factor;
-				var y5 = this.dy + 500 * factor - si[i * 2 + 1] * factor;
+				var x5 = this.dx + si[i * 2] * this.scaleX;
+				var y5 = this.dy + 500 * this.scaleY - si[i * 2 + 1] * this.scaleY;
 				this11.x = x5;
 				this11.y = y5;
 				this11.me.lineTo(x5,y5);

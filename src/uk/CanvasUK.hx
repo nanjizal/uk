@@ -10,11 +10,13 @@ class CanvasUK{
     public var borderColor = 0x89B1C2;
     public var grassColor  = 0xD3EAB7;
     public var seaColor    = 0xB5E1F7;
+    public var scaleX: Float = 1.;
+    public var scaleY: Float = 1.;
     var surface:        Surface;
     public function new( surface: Surface ){
         this.surface = surface;
     }
-    public function draw( factor: Float = 1. ){
+    public function draw(){
         var shapes = [UK.shape1
                      ,UK.shape2
                      ,UK.shape3
@@ -40,20 +42,20 @@ class CanvasUK{
         surface.beginFill( seaColor, 1. );
         surface.lineStyle( 1., borderColor, 1. );
         surface.moveTo( dx, dy );
-        surface.lineTo( dx + w*factor, dy );
-        surface.lineTo( dx + w*factor, dy + h*factor );
-        surface.lineTo( dx, dy + h*factor );
+        surface.lineTo( dx + w*scaleX, dy );
+        surface.lineTo( dx + w*scaleY, dy + h*scaleY );
+        surface.lineTo( dx, dy + h*scaleY );
         surface.endFill();
         dx += 20;
         dy += 20;
         for( si in shapes ){
             surface.beginFill( grassColor, 1. );
             surface.lineStyle( 1., borderColor, 1. );
-            surface.moveTo( dx + si[ 0 ]*factor
-                          , dy + 500*factor-si[ 1 ]*factor );
+            surface.moveTo( dx + si[ 0 ]*scaleX
+                          , dy + 500*scaleY-si[ 1 ]*scaleY );
             for( i in 1...Math.round( si.length/2 ) ){
-                surface.lineTo( dx + si[ i*2 ]*factor
-                              , dy + 500*factor- si[ i*2 + 1 ]*factor );
+                surface.lineTo( dx + si[ i*2 ]*scaleX
+                              , dy + 500*scaleY- si[ i*2 + 1 ]*scaleY );
             }
             surface.endFill();
         }
