@@ -3,6 +3,10 @@ import htmlHelper.canvas.Surface;
 import uk.UK;
 // sorry currently excludes Northern Ireland for my one technical reasons, would be nice to add
 class CanvasUK{
+    public var dx = 10;
+    public var dy = 10;
+    public var w = 400;
+    public var h = 550;
     public var borderColor = 0x89B1C2;
     public var grassColor  = 0xD3EAB7;
     public var seaColor    = 0xB5E1F7;
@@ -33,10 +37,6 @@ class CanvasUK{
                      ,UK.shape20
                      ,UK.shape21
                      ,UK.shape22];
-        var dx = 10;
-        var dy = 10;
-        var w = 400;
-        var h = 550;
         surface.beginFill( seaColor, 1. );
         surface.lineStyle( 1., borderColor, 1. );
         surface.moveTo( dx, dy );
