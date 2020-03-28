@@ -43,7 +43,7 @@ class CanvasUK{
         surface.lineStyle( 1., borderColor, 1. );
         surface.moveTo( dx, dy );
         surface.lineTo( dx + w*scaleX, dy );
-        surface.lineTo( dx + w*scaleY, dy + h*scaleY );
+        surface.lineTo( dx + w*scaleX, dy + h*scaleY );
         surface.lineTo( dx, dy + h*scaleY );
         surface.endFill();
         dx += 20;
