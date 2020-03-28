@@ -185,6 +185,7 @@ js_Boot.__string_rec = function(o,s) {
 	}
 };
 var uk_CanvasUK = function(surface) {
+	this.alpha = 1.;
 	this.scaleY = 1.;
 	this.scaleX = 1.;
 	this.seaColor = 11919863;
@@ -202,14 +203,30 @@ uk_CanvasUK.prototype = {
 		var shapes = [uk_UK.shape1,uk_UK.shape2,uk_UK.shape3,uk_UK.shape4,uk_UK.shape5,uk_UK.shape6,uk_UK.shape7,uk_UK.shape8,uk_UK.shape9,uk_UK.shape10,uk_UK.shape11,uk_UK.shape12,uk_UK.shape13,uk_UK.shape14,uk_UK.shape15,uk_UK.shape16,uk_UK.shape17,uk_UK.shape18,uk_UK.shape19,uk_UK.shape20,uk_UK.shape21,uk_UK.shape22];
 		var this1 = this.surface;
 		var col = this.seaColor;
-		var tmp = StringTools.hex(col,6);
-		this1.me.fillStyle = "#" + tmp;
+		var alpha = this.alpha;
+		if(alpha != null && alpha != 1.0) {
+			var r = col >> 16 & 255;
+			var g = col >> 8 & 255;
+			var b = col & 255;
+			this1.me.fillStyle = "rgba(" + r + "," + g + "," + b + "," + alpha + ")";
+		} else {
+			var tmp = StringTools.hex(col,6);
+			this1.me.fillStyle = "#" + tmp;
+		}
 		this1.me.beginPath();
 		var this2 = this.surface;
 		var col1 = this.borderColor;
+		var alpha1 = this.alpha;
 		this2.me.lineWidth = 1.;
-		var tmp1 = StringTools.hex(col1,6);
-		this2.me.strokeStyle = "#" + tmp1;
+		if(alpha1 != null && alpha1 != 1.0) {
+			var r1 = col1 >> 16 & 255;
+			var g1 = col1 >> 8 & 255;
+			var b1 = col1 & 255;
+			this2.me.strokeStyle = "rgba(" + r1 + "," + g1 + "," + b1 + "," + alpha1 + ")";
+		} else {
+			var tmp1 = StringTools.hex(col1,6);
+			this2.me.strokeStyle = "#" + tmp1;
+		}
 		var this3 = this.surface;
 		var x = this.dx;
 		var y = this.dy;
@@ -223,7 +240,7 @@ uk_CanvasUK.prototype = {
 		this4.y = y1;
 		this4.me.lineTo(x1,y1);
 		var this5 = this.surface;
-		var x2 = this.dx + this.w * this.scaleY;
+		var x2 = this.dx + this.w * this.scaleX;
 		var y2 = this.dy + this.h * this.scaleY;
 		this5.x = x2;
 		this5.y = y2;
@@ -246,14 +263,30 @@ uk_CanvasUK.prototype = {
 			++_g;
 			var this8 = this.surface;
 			var col2 = this.grassColor;
-			var tmp2 = StringTools.hex(col2,6);
-			this8.me.fillStyle = "#" + tmp2;
+			var alpha2 = this.alpha;
+			if(alpha2 != null && alpha2 != 1.0) {
+				var r2 = col2 >> 16 & 255;
+				var g2 = col2 >> 8 & 255;
+				var b2 = col2 & 255;
+				this8.me.fillStyle = "rgba(" + r2 + "," + g2 + "," + b2 + "," + alpha2 + ")";
+			} else {
+				var tmp2 = StringTools.hex(col2,6);
+				this8.me.fillStyle = "#" + tmp2;
+			}
 			this8.me.beginPath();
 			var this9 = this.surface;
 			var col3 = this.borderColor;
+			var alpha3 = this.alpha;
 			this9.me.lineWidth = 1.;
-			var tmp3 = StringTools.hex(col3,6);
-			this9.me.strokeStyle = "#" + tmp3;
+			if(alpha3 != null && alpha3 != 1.0) {
+				var r3 = col3 >> 16 & 255;
+				var g3 = col3 >> 8 & 255;
+				var b3 = col3 & 255;
+				this9.me.strokeStyle = "rgba(" + r3 + "," + g3 + "," + b3 + "," + alpha3 + ")";
+			} else {
+				var tmp3 = StringTools.hex(col3,6);
+				this9.me.strokeStyle = "#" + tmp3;
+			}
 			var this10 = this.surface;
 			var x4 = this.dx + si[0] * this.scaleX;
 			var y4 = this.dy + 500 * this.scaleY - si[1] * this.scaleY;

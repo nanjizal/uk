@@ -12,6 +12,7 @@ class CanvasUK{
     public var seaColor    = 0xB5E1F7;
     public var scaleX: Float = 1.;
     public var scaleY: Float = 1.;
+    public var alpha: Float = 1.;
     var surface:        Surface;
     public function new( surface: Surface ){
         this.surface = surface;
@@ -39,8 +40,8 @@ class CanvasUK{
                      ,UK.shape20
                      ,UK.shape21
                      ,UK.shape22];
-        surface.beginFill( seaColor, 1. );
-        surface.lineStyle( 1., borderColor, 1. );
+        surface.beginFill( seaColor, alpha );
+        surface.lineStyle( 1., borderColor, alpha );
         surface.moveTo( dx, dy );
         surface.lineTo( dx + w*scaleX, dy );
         surface.lineTo( dx + w*scaleX, dy + h*scaleY );
@@ -49,8 +50,8 @@ class CanvasUK{
         dx += 20;
         dy += 20;
         for( si in shapes ){
-            surface.beginFill( grassColor, 1. );
-            surface.lineStyle( 1., borderColor, 1. );
+            surface.beginFill( grassColor, alpha );
+            surface.lineStyle( 1., borderColor, alpha );
             surface.moveTo( dx + si[ 0 ]*scaleX
                           , dy + 500*scaleY-si[ 1 ]*scaleY );
             for( i in 1...Math.round( si.length/2 ) ){
